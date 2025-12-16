@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@supabase/supabase-js';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 
@@ -16,7 +16,10 @@ const THEME = {
 };
 
 export default function AuthPage() {
-  const supabase = createClientComponentClient();
+  const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
   
   return (
     <div style={{
